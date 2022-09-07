@@ -1,7 +1,7 @@
-def add_time(start, add, day) :
+def add_time(start, add, day = False) :
   print(start)
   print(add)
-  
+  if day : print(day)
   
 add_time("3:00 PM", "3:10")
 # Should Returns: 6:10 PM
