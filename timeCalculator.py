@@ -17,10 +17,11 @@ def add_time(startTime, duration, day = '') :
     newTime = int(newTime) + 1200
   endTime = int(newTime) + int(newDur)
   
+  print('ENDTIME:', endTime)
   if amPm == 'AM' and endTime > 1159 : 
     amPm = 'PM'
 
-  # if endTime > 2400 : 
+  # # if endTime > 2400 : 
 
   if amPm == 'PM' and endTime < 2400 and endTime > 1200: 
     endTime = endTime - 1200 
@@ -45,10 +46,11 @@ def add_time(startTime, duration, day = '') :
   
   while hour > 12 :
     hour = hour - 12
-    if amPm == 'PM' :
+    if amPm == 'AM' :
+      amPm = 'PM'
+    else : 
       amPm = 'AM'
       timeLength = timeLength + 1
-    else : amPm = 'PM'
   
   print('MINUTES:', minutes)
   print('HOUR:', hour)
@@ -64,31 +66,27 @@ def add_time(startTime, duration, day = '') :
     
     if timeLength > 0:
       if timeLength == 1 :
-        output = f'{output} ({timeLength} next day)'
+        output = f'{output} (next day)'
       else : 
         output = f'{output} ({timeLength} days later)'
       
     print(output)
-
-
-    
-    
     
   
-add_time("3:00 PM", "3:10")
+print('TEST###1:', '\n', add_time("3:00 PM", "3:10"), '\n')
 # Should Return: 6:10 PM
 
-add_time("11:30 AM", "2:32", "Monday")
+print('TEST###2:', '\n', add_time("11:30 AM", "2:32", "Monday"), '\n')
 # Should Return: 2:02 PM, Monday
 
-add_time("11:43 AM", "00:20")
+print('TEST###3:', '\n', add_time("11:43 AM", "00:20"), '\n')
 # Should Return: 12:03 PM
 
-# add_time("10:10 PM", "3:30")
+print('TEST###4:', '\n', add_time("10:10 PM", "3:30"), '\n')
 # Should Return: 1:40 AM (next day)
 
-# add_time("11:43 PM", "24:20", "tueSday")
+print('TEST###5:', '\n', add_time("11:43 PM", "24:20", "tueSday"), '\n')
 # Should Return: 12:03 AM, Thursday (2 days later)
 
-# add_time("6:30 PM", "205:12")
+print('TEST###6:', '\n', add_time("6:30 PM", "205:12"), '\n')
 # Should Return: 7:42 AM (9 days later)
