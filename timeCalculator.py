@@ -61,7 +61,9 @@ def add_time(startTime, duration, day = '') :
     if day != '' : 
       output = f'{output} {day}'
     
-
+    if timeLength != '':
+      output = f'{output} {timeLength}'
+      
     print(output)
 
 
