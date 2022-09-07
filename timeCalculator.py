@@ -1,6 +1,6 @@
-def add_time(start, add, day = False) :
-  print(start)
-  print(add)
+def add_time(startTime, duration, day = False) :
+  print(startTime)
+  print(duration)
   if day : print(day)
   
 add_time("3:00 PM", "3:10")
