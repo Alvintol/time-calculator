@@ -43,15 +43,18 @@ def add_time(startTime, duration, day = '') :
     hour = hour + 1
     if minutes == 0:
       minutes = '00'
-    
+  
+  while hour > 24 :
+    hour = hour - 24
+    timeLength = timeLength + 1  
   
   while hour > 12 :
     hour = hour - 12
     if amPm == 'AM' :
       amPm = 'PM'
     if amPm == 'PM' :
+      timeLength = timeLength + 1  
       amPm = 'AM'
-      # timeLength = timeLength + 1
   
   print('MINUTES:', minutes)
   print('HOUR:', hour)
