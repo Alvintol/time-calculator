@@ -42,7 +42,7 @@ def add_time(startTime, duration, day = '') :
     output = f'{hour}:{minutes} {amPm}'
     
     if day != '' : 
-      output = f'{output} {day}'
+      output = f'{output} {day.title()}'
     
     if timeLength > 0:
       if timeLength == 1 :
