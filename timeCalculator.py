@@ -14,11 +14,16 @@ def add_time(startTime, duration, day = '') :
   
   endTime = int(newTime) + int(newDur)
   
-  if endTime < 2400 : 
-    splitTime = [*str(endTime)]
-    splitTime.insert(-2, ':')
-    splitTime.append(amPm)
-    print(''.join(splitTime))
+  # if endTime < 2400 : 
+  
+  
+  splitTime = [*str(endTime)]
+  splitTime.insert(-2, ':')
+  splitTime.append(amPm)
+  
+  if day != '' :
+    splitTime.append(f' {day}')  
+  print(''.join(splitTime))
   
 add_time("3:00 PM", "3:10")
 # Should Return: 6:10 PM
