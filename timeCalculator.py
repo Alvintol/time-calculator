@@ -12,16 +12,16 @@ def add_time(startTime, duration, day = '') :
   newDur = re.sub(r':', '', duration)
   print('NEWDURATION1:', newDur)
   
-  if amPm == ' PM' : 
+  if amPm == 'PM' : 
     newTime = int(newTime) + 1200
   endTime = int(newTime) + int(newDur)
   
-  if amPm == ' AM' and endTime > 1159 : 
-    amPm = ' PM'
+  if amPm == 'AM' and endTime > 1159 : 
+    amPm = 'PM'
 
   # if endTime > 2400 : 
 
-  if amPm == ' PM' and endTime < 2400 and endTime > 1200: 
+  if amPm == 'PM' and endTime < 2400 and endTime > 1200: 
     endTime = endTime - 1200 
   
   print(endTime)
@@ -31,17 +31,38 @@ def add_time(startTime, duration, day = '') :
   minutes = int(''.join(splitTime[-2:]))
   hour = int(''.join(splitTime[:-2]))
   
-  if minutes > 0 and minutes < 60 and hour > 0 and hour < 13 :
-    splitTime.insert(-2, ':')
-    splitTime.append(amPm)
-
-    if day != '' :
-      splitTime.append(f' {day}')  
-    print(''.join(splitTime))
+  print('MINUTES:', minutes)
+  print('MINUTES:', type(minutes))
+  print('HOUR:', hour)
+  print('AM/PM:', amPm)
     
   while minutes >= 60 : 
     minutes = minutes - 60
     hour = hour + 1
+    if minutes == 0:
+      minutes = '00'
+  
+  while hour > 12 :
+    hour = hour - 12
+    if amPm == 'PM' :
+      amPm = 'AM'
+    else : amPm = 'PM'
+  
+  print('MINUTES:', minutes)
+  print('HOUR:', hour)
+  print('AM/PM:', amPm)
+  
+  if minutes > 0 and minutes < 60 and hour > 0 and hour < 13 :
+    if minutes < 10 : 
+      minutes = f'0{str(minutes)}'
+      
+    print(f'{hour}:{minutes} {amPm} {day}')
+    # splitTime.insert(-2, ':')
+    # splitTime.append(amPm)
+
+    # if day != '' :
+    #   splitTime.append(f' {day}')  
+    # print(''.join(splitTime))
 
     
     
