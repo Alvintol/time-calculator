@@ -17,7 +17,8 @@ def add_time(startTime, duration, day = '') :
   endTime = int(newTime) + int(newDur)
   
   # if endTime > 2400 : 
-  # if endTime > 1200 and endTime < 2400 : 
+  if amPm == ' AM' and endTime > 1200 : 
+    amPm = ' PM'
 
   if amPm == ' PM' : 
     endTime = endTime - 1200
