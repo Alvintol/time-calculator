@@ -11,6 +11,7 @@ def add_time(startTime, duration, day = '') :
   print('NEWTIME:', newTime)
   newDur = re.sub(r':', '', duration)
   print('NEWDURATION1:', newDur)
+  timeLength = ''
   
   if amPm == 'PM' : 
     newTime = int(newTime) + 1200
@@ -55,14 +56,14 @@ def add_time(startTime, duration, day = '') :
   if minutes > 0 and minutes < 60 and hour > 0 and hour < 13 :
     if minutes < 10 : 
       minutes = f'0{str(minutes)}'
-      
-    print(f'{hour}:{minutes} {amPm} {day}')
-    # splitTime.insert(-2, ':')
-    # splitTime.append(amPm)
+    output = f'{hour}:{minutes} {amPm}'
+    
+    if day != '' : 
+      output = f'{output} {day}'
+    
 
-    # if day != '' :
-    #   splitTime.append(f' {day}')  
-    # print(''.join(splitTime))
+    print(output)
+
 
     
     
