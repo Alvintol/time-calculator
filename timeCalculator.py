@@ -5,13 +5,13 @@ def add_time(startTime, duration, day = '') :
   print('DURATION:', duration)  
   if day != '' : print('DAY OF THE WEEK:', day)
   
-  amPm = f' {startTime[-2:]}'
+  amPm = f'{startTime[-2:]}'
   print('AM/PM:', amPm)
   newTime = re.sub(r':|AM|PM', '', startTime)
   print('NEWTIME:', newTime)
   newDur = re.sub(r':', '', duration)
   print('NEWDURATION1:', newDur)
-  timeLength = ''
+  timeLength = 0
   
   if amPm == 'PM' : 
     newTime = int(newTime) + 1200
@@ -47,6 +47,7 @@ def add_time(startTime, duration, day = '') :
     hour = hour - 12
     if amPm == 'PM' :
       amPm = 'AM'
+      timeLength = timeLength + 1
     else : amPm = 'PM'
   
   print('MINUTES:', minutes)
@@ -61,8 +62,11 @@ def add_time(startTime, duration, day = '') :
     if day != '' : 
       output = f'{output} {day}'
     
-    if timeLength != '':
-      output = f'{output} {timeLength}'
+    if timeLength > 0:
+      if timeLength == 1 :
+        output = f'{output} ({timeLength} next day)'
+      else : 
+        output = f'{output} ({timeLength} days later)'
       
     print(output)
 
