@@ -11,7 +11,9 @@ def add_time(startTime, duration, day = False) :
   print('NEWDURATION1:', newDur)
   
   endTime = int(newTime) + int(newDur)
-  print(endTime)
+  
+  if endTime < 2400 : 
+    print([*str(endTime)])
   
 add_time("3:00 PM", "3:10")
 # Should Returns: 6:10 PM
