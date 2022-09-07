@@ -1,3 +1,4 @@
+# Import Regex capabilities
 import re
 
 def add_time(startTime, duration, day = '') :
@@ -6,6 +7,8 @@ def add_time(startTime, duration, day = '') :
   newTime = re.sub(r':|AM|PM', '', startTime)
   newDur = re.sub(r':', '', duration)
   timeLength = 0
+  if day != '' :
+    day = day.lower()
   
   if amPm == 'PM' :
     int(newTime) + 1200
@@ -23,7 +26,6 @@ def add_time(startTime, duration, day = '') :
     if minutes == 0:
       minutes = '00'
   
- 
   while hour >= 12 :
     if amPm == 'AM' :
       amPm = 'PM'
