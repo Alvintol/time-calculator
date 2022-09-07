@@ -1,6 +1,9 @@
 # Import Regex capabilities
 import re
 
+def next_day(weekday) :
+  return weekday
+
 def add_time(startTime, duration, day = '') :
   
   amPm = f'{startTime[-2:]}'
