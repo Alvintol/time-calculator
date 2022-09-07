@@ -16,13 +16,19 @@ def add_time(startTime, duration, day = '') :
     newTime = int(newTime) + 1200
   endTime = int(newTime) + int(newDur)
   
-  # if endTime > 2400 : 
-  if amPm == ' AM' and endTime > 1200 : 
+  if amPm == ' AM' and endTime > 1159 : 
     amPm = ' PM'
 
-  if amPm == ' PM' : 
-    endTime = endTime - 1200
+  # if endTime > 2400 : 
+
+  if amPm == ' PM' and endTime > 2400: 
+    endTime = endTime - 1200 
+  
   splitTime = [*str(endTime)]
+  
+  minutes = ''.join(splitTime[-2:])
+  print('MINUTES:', minutes)
+  
   splitTime.insert(-2, ':')
   splitTime.append(amPm)
   
@@ -36,7 +42,7 @@ add_time("3:00 PM", "3:10")
 add_time("11:30 AM", "2:32", "Monday")
 # Should Return: 2:02 PM, Monday
 
-# add_time("11:43 AM", "00:20")
+add_time("11:43 AM", "00:20")
 # Should Return: 12:03 PM
 
 # add_time("10:10 PM", "3:30")
