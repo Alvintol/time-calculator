@@ -12,12 +12,15 @@ def add_time(startTime, duration, day = '') :
   newDur = re.sub(r':', '', duration)
   print('NEWDURATION1:', newDur)
   
+  if amPm == ' PM' : 
+    newTime = int(newTime) + 1200
   endTime = int(newTime) + int(newDur)
   
   # if endTime > 2400 : 
-  
   # if endTime > 1200 and endTime < 2400 : 
-    
+
+  if amPm == ' PM' : 
+    endTime = endTime - 1200
   splitTime = [*str(endTime)]
   splitTime.insert(-2, ':')
   splitTime.append(amPm)
