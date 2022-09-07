@@ -1,7 +1,9 @@
 # Import Regex capabilities
 import re
 
+# Provides the following weekday if provided
 def next_day(weekday) :
+  if weekday == '' : return ''
   switch = {
     'monday' : 'tuesday',
     'tuesday' : 'wednesday',
@@ -43,7 +45,8 @@ def add_time(startTime, duration, day = '') :
       amPm = 'PM'
     else :
       amPm = 'AM'
-      timeLength = timeLength + 1  
+      timeLength = timeLength + 1
+      day = next_day(day)  
     hour = hour - 12
 
   if minutes > 0 and minutes < 60 and hour >= 0 and hour < 13 :
@@ -63,22 +66,3 @@ def add_time(startTime, duration, day = '') :
         output = f'{output} ({timeLength} days later)'
       
     print(output)
-    
-  
-print('TEST###1:', '\n', add_time("3:00 PM", "3:10"), '\n')
-# Should Return: 6:10 PM
-
-print('TEST###2:', '\n', add_time("11:30 AM", "2:32", "Monday"), '\n')
-# Should Return: 2:02 PM, Monday
-
-print('TEST###3:', '\n', add_time("11:43 AM", "00:20"), '\n')
-# Should Return: 12:03 PM
-
-print('TEST###4:', '\n', add_time("10:10 PM", "3:30"), '\n')
-# Should Return: 1:40 AM (next day)
-
-print('TEST###5:', '\n', add_time("11:43 PM", "24:20", "tueSday"), '\n')
-# Should Return: 12:03 AM, Thursday (2 days later)
-
-print('TEST###6:', '\n', add_time("6:30 PM", "205:12"), '\n')
-# Should Return: 7:42 AM (9 days later)
