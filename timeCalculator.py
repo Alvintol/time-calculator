@@ -5,9 +5,10 @@ def add_time(startTime, duration, day = False) :
   print('DURATION:', duration)  
   if day : print('DAY OF THE WEEK:', day)
   
-  time = re.sub(r':|AM|PM', '', startTime)
-  print('NEWTIME:', time)
-  
+  newTime = re.sub(r':|AM|PM', '', startTime)
+  print('NEWTIME:', newTime)
+  newDur = re.sub(r':', '', duration)
+  print('NEWDURATION:', newDur)
   
 add_time("3:00 PM", "3:10")
 # Should Returns: 6:10 PM
