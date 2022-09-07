@@ -14,9 +14,10 @@ def add_time(startTime, duration, day = '') :
   
   endTime = int(newTime) + int(newDur)
   
-  # if endTime < 2400 : 
+  # if endTime > 2400 : 
   
-  
+  # if endTime > 1200 and endTime < 2400 : 
+    
   splitTime = [*str(endTime)]
   splitTime.insert(-2, ':')
   splitTime.append(amPm)
