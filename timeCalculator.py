@@ -5,6 +5,8 @@ def add_time(startTime, duration, day = False) :
   print('DURATION:', duration)  
   if day : print('DAY OF THE WEEK:', day)
   
+  amPm = f' {startTime[-2:]}'
+  print('AM/PM:', amPm)
   newTime = re.sub(r':|AM|PM', '', startTime)
   print('NEWTIME:', newTime)
   newDur = re.sub(r':', '', duration)
@@ -15,6 +17,7 @@ def add_time(startTime, duration, day = False) :
   if endTime < 2400 : 
     splitTime = [*str(endTime)]
     splitTime.insert(-2, ':')
+    splitTime.append(amPm)
     print(''.join(splitTime))
   
 add_time("3:00 PM", "3:10")
