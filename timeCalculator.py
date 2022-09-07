@@ -1,42 +1,21 @@
 import re
 
 def add_time(startTime, duration, day = '') :
-  print('STARTIME:', startTime)
-  print('DURATION:', duration)  
-  if day != '' : print('DAY OF THE WEEK:', day)
   
   amPm = f'{startTime[-2:]}'
-  print('AM/PM:', amPm)
   newTime = re.sub(r':|AM|PM', '', startTime)
-  print('NEWTIME:', newTime)
   newDur = re.sub(r':', '', duration)
-  print('NEWDURATION1:', newDur)
   timeLength = 0
   
-  if amPm == 'PM' : 
-    newTime = int(newTime) + 1200
+  if amPm == 'PM' :
+    int(newTime) + 1200
+    
   endTime = int(newTime) + int(newDur)
-  
-  print('ENDTIME:', endTime)
-  if amPm == 'AM' and endTime > 1159 : 
-    amPm = 'PM'
 
-  # # if endTime > 2400 : 
-
-  if amPm == 'PM' and endTime < 2400 and endTime > 1200: 
-    endTime = endTime - 1200 
-  
-  print(endTime)
   splitTime = [*str(endTime)] 
-  print(splitTime)
   
   minutes = int(''.join(splitTime[-2:]))
   hour = int(''.join(splitTime[:-2]))
-  
-  print('MINUTES:', minutes)
-  print('MINUTES:', type(minutes))
-  print('HOUR:', hour)
-  print('AM/PM:', amPm)
     
   while minutes >= 60 : 
     minutes = minutes - 60
@@ -44,23 +23,18 @@ def add_time(startTime, duration, day = '') :
     if minutes == 0:
       minutes = '00'
   
-  while hour > 24 :
-    hour = hour - 24
-    timeLength = timeLength + 1  
-  
-  while hour > 12 :
-    hour = hour - 12
+ 
+  while hour >= 12 :
     if amPm == 'AM' :
       amPm = 'PM'
-    if amPm == 'PM' :
-      timeLength = timeLength + 1  
+    else :
       amPm = 'AM'
-  
-  print('MINUTES:', minutes)
-  print('HOUR:', hour)
-  print('AM/PM:', amPm)
-  
-  if minutes > 0 and minutes < 60 and hour > 0 and hour < 13 :
+      timeLength = timeLength + 1  
+    hour = hour - 12
+
+  if minutes > 0 and minutes < 60 and hour >= 0 and hour < 13 :
+    if hour == 0 :
+      hour = 12
     if minutes < 10 : 
       minutes = f'0{str(minutes)}'
     output = f'{hour}:{minutes} {amPm}'
