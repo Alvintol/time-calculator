@@ -2,7 +2,16 @@
 import re
 
 def next_day(weekday) :
-  return weekday
+  switch = {
+    'monday' : 'tuesday',
+    'tuesday' : 'wednesday',
+    'wednesday' : 'thursday',
+    'thursday' : 'friday',
+    'friday' : 'saturday',
+    'saturday' : 'sunday',
+    'sunday' : 'monday',
+  }
+  return switch.get(weekday)
 
 def add_time(startTime, duration, day = '') :
   
